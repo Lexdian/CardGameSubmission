@@ -226,9 +226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b965fe51cbc1d0a4d99cc07fe54d9550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selecionado: 0
   CardInfo: {fileID: 0}
+  YourCard: {fileID: 0}
   Numero: {fileID: 1329599283216332592}
+  SuaCarta: 1
 --- !u!114 &1329599283460687252
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,19 +4,29 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-class BattleCard : GenericCardScript
+class BattleCard : MonoBehaviour
 {
     public CardSO CardInfo;
     private float CurrentNum;
+    public BattleCardObj YourCard;
+
+    public BattleGameController BGC {get; set;}
 
     public TextMeshProUGUI Numero;
 
-    public override void Selecionado()
+    public bool SuaCarta;
+    public void Selecionado()
     {
-        if(selecionado == false) 
+        if (BGC.PodeJogar || SuaCarta == false)
         {
-            Debug.Log("Nahida");
-            selecionado = true;
+            YourCard.CardInfo = CardInfo;
+            YourCard.gameObject.SetActive(true);
+            if (SuaCarta)
+            {
+               BGC.StartCoroutine(BGC.Jogou());
+                Debug.Log("Jogou");
+            }
+            Destroy(gameObject);
         }
     }
     float Num {
@@ -32,13 +42,14 @@ class BattleCard : GenericCardScript
             }
         }
         }
-    private Image Img;
-    void Awake()
+    void Start()
     {
         Num = CardInfo.Num;
-        Img = CardInfo.img;
 
-        Numero.text = CurrentNum.ToString();
+        if (SuaCarta)
+        {
+            Numero.text = CurrentNum.ToString();
+        }
     }
 
     // Update is called once per frame

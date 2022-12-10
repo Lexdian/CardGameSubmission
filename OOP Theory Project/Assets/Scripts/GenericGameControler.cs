@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-abstract class GenericGameControler : MonoBehaviour
+public class GenericGameControler : MonoBehaviour
 {
     public GameObject TelaFinal;
 
